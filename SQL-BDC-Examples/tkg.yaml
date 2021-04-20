@@ -1,0 +1,27 @@
+apiVersion: run.tanzu.vmware.com/v1alpha1
+kind: TanzuKubernetesCluster
+metadata:
+  name: sqlbdc-cluster
+  namespace: sqlbdc
+spec:
+  distribution:
+    version: v1.18.5
+  topology:
+    controlPlane:
+      class: guaranteed-2xlarge
+      count: 1
+      storageClass: vsan-default-storage-policy
+      volumes:
+        - name: etcd
+          mountPath: /var/lib/etcd
+          capacity:
+            storage: 100Gi  
+    workers:
+      class: guaranteed-8xlarge
+      count: 4
+      storageClass: vsan-default-storage-policy
+      volumes:
+        - name: containerd
+          mountPath: /var/lib/containerd
+          capacity:
+            storage: 1000Gi 
