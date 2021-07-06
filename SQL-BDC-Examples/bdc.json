@@ -73,12 +73,12 @@
                     "storage": {
                         "data": {
                             "size": "2000Gi",
-                            "className": "vsan-default-storage-policy",
+                            "className": "sql-bdc-storage-class",
                             "accessMode": "ReadWriteOnce"
                         },
                         "logs": {
                             "size": "200Gi",
-                            "className": "vsan-default-storage-policy",
+                            "className": "sql-bdc-storage-class",
                             "accessMode": "ReadWriteOnce"
                         }
                     }
@@ -105,12 +105,12 @@
                     "storage": {
                         "data": {
                             "size": "2000Gi",
-                            "className": "vsan-default-storage-policy",
+                            "className": "sql-bdc-storage-class",
                             "accessMode": "ReadWriteOnce"
                         },
                         "logs": {
                             "size": "200Gi",
-                            "className": "vsan-default-storage-policy",
+                            "className": "sql-bdc-storage-class",
                             "accessMode": "ReadWriteOnce"
                         }
                     }
@@ -131,13 +131,13 @@
                     },
                     "storage": {
                         "data": {
-                            "size": "2000Gi",
-                            "className": "vsan-default-storage-policy",
+                            "size": "10000Gi",
+                            "className": "sql-bdc-storage-class",
                             "accessMode": "ReadWriteOnce"
                         },
                         "logs": {
                             "size": "200Gi",
-                            "className": "vsan-default-storage-policy",
+                            "className": "sql-bdc-storage-class",
                             "accessMode": "ReadWriteOnce"
                         }
                     }
@@ -150,7 +150,19 @@
                 },
                 "spec": {
                     "type": "Spark",
-                    "replicas": 4
+                    "replicas": 4,
+                    "storage": {
+                        "data": {
+                            "size": "5000Gi",
+                            "className": "sql-bdc-storage-class",
+                            "accessMode": "ReadWriteOnce"
+                        },
+                        "logs": {
+                            "size": "200Gi",
+                            "className": "sql-bdc-storage-class",
+                            "accessMode": "ReadWriteOnce"
+                        }
+                    }
                 }
             }
         },
@@ -184,19 +196,17 @@
                     "spark-defaults-conf.spark.driver.memory": "16G",
                     "spark-defaults-conf.spark.driver.memoryOverhead": "2048",
                     "spark-defaults-conf.spark.driver.maxResultSize": "16g",
-                    "spark-defaults-conf.spark.executor.instances": "12",
+                    "spark-defaults-conf.spark.executor.instances": "24",
                     "spark-defaults-conf.spark.executor.cores": "8",
-                    "spark-defaults-conf.spark.executor.memory": "28g",
-                    "spark-defaults-conf.spark.executor.memoryOverhead": "2048",
-					"spark-defaults-conf.spark.sql.statistics.histogram.enabled": "true",
-					"spark-defaults-conf.spark.sql.cbo.enabled": "true",
-					"spark-defaults-conf.spark.sql.cbo.joinRecorder.enabled": "true",
-					"spark-defaults-conf.spark.scheduler.listenerbus.eventqueue.capacity": "50000",
-                    "yarn-site.yarn.nodemanager.resource.memory-mb": "122880",
-                    "yarn-site.yarn.nodemanager.resource.cpu-vcores": "28",
-                    "yarn-site.yarn.scheduler.maximum-allocation-mb": "122880",
-                    "yarn-site.yarn.scheduler.maximum-allocation-vcores": "28",
-                    "yarn-site.yarn.scheduler.capacity.maximum-am-resource-percent": "0.2"
+                    "spark-defaults-conf.spark.executor.memory": "55g",
+                    "spark-defaults-conf.spark.executor.memoryOverhead": "6144",
+		            "spark-defaults-conf.spark.sql.cbo.enabled": "true",
+		            "spark-defaults-conf.spark.sql.cbo.joinReorder.enabled": "true",			
+		            "spark-defaults-conf.spark.scheduler.listenerbus.eventqueue.capacity": "50000",
+                    "yarn-site.yarn.nodemanager.resource.memory-mb": "368640",
+                    "yarn-site.yarn.nodemanager.resource.cpu-vcores": "56",
+                    "yarn-site.yarn.scheduler.maximum-allocation-mb": "368640",
+                    "yarn-site.yarn.scheduler.maximum-allocation-vcores": "56"
                 }
             }
         }
