@@ -2,7 +2,7 @@
     "apiVersion": "v1",
     "metadata": {
         "kind": "Cluster",
-        "name": "mssql-cluster"
+        "name": "mssql-clusterß"
     },
     "spec": {
         "docker": {
